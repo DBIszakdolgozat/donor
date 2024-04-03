@@ -1,0 +1,23 @@
+<div>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="/" class="navbar-brand">Weboldal</a>
+    <div class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a routerLink="/admin/blogs" class="nav-link">Blogs</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/admin/add" class="nav-link">Add</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/admin/file" class="nav-link">Filemanagement</a>
+      </li>
+      <li class="nav-item">
+        <a (click)="logout()" style="cursor: pointer" class="nav-link">Kijelentkezés</a>
+      </li>
+    </div>
+  </nav>
+
+  <div class="container mt-3">
+    <router-outlet></router-outlet>
+  </div>
+</div>

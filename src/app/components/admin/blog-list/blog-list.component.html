@@ -1,0 +1,35 @@
+<div class="list row">
+  <div class="col-md-6">
+    <h4>blogs List</h4>
+    <ul class="list-group">
+      @for (blog of BlogList; track blog.key; let i = $index) {
+      <li
+        class="list-group-item"
+        [class.active]="i == currentIndex"
+        (click)="setActiveBlog(blog, i)"
+      >
+        {{ blog.title }}
+      </li>
+      }
+    </ul> 
+
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllBlogs()">
+      Remove All
+    </button>
+  </div>
+  <div class="col-md-6">
+    @if (currentBlog) {
+    <div>
+      <app-blog-details
+        (refreshList)="refreshList()"
+        [blog]="currentBlog"
+      ></app-blog-details>
+    </div>
+    } @else {
+    <div>
+      <br />
+      <p>Please click on a blog...</p>
+    </div>
+    }
+  </div>
+</div>

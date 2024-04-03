@@ -1,0 +1,56 @@
+@if (currentBlog) {
+<div class="edit-form">
+  <h4>Blog</h4>
+  <form>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        [(ngModel)]="currentBlog.title"
+        name="title"
+      />
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input
+        type="text"
+        class="form-control"
+        id="description"
+        [(ngModel)]="currentBlog.description"
+        name="description"
+      />
+    </div>
+
+    <div class="form-group">
+      <label><strong>Status:</strong></label>
+      {{ currentBlog.published ? "Published" : "Pending" }}
+    </div>
+  </form>
+
+  @if (currentBlog.published) {
+  <button class="badge badge-primary mr-2" (click)="updatePublished(false)">
+    UnPublish
+  </button>
+  } @else {
+  <button class="badge badge-primary mr-2" (click)="updatePublished(true)">
+    Publish
+  </button>
+  }
+
+  <button class="badge badge-danger mr-2" (click)="deleteBlog()">
+    Delete
+  </button>
+
+  <button type="submit" class="badge badge-success" (click)="updateBlog()">
+    Update
+  </button>
+  <p>{{ message }}</p>
+</div>
+} @else {
+<div>
+  <br />
+  <p>Cannot access this blog...</p>
+</div>
+}
