@@ -11,8 +11,8 @@ import { AdminDashboardComponent } from './components/admin/admin-dashboard/admi
 import { redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
 
-const redirectLoggedInToAdmin = () => redirectLoggedInTo([ 'admin' ]);
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo([ 'login' ]);
+const redirectLoggedInToAdmin = () => redirectLoggedInTo([ '/admin' ]);
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo([ '/login' ]);
 
 const routes: Routes = [
   {
