@@ -1,35 +1,62 @@
-<div class="list row">
-  <div class="col-md-6">
-    <h4>blogs List</h4>
-    <ul class="list-group">
-      @for (blog of BlogList; track blog.key; let i = $index) {
-      <li
-        class="list-group-item"
-        [class.active]="i == currentIndex"
-        (click)="setActiveBlog(blog, i)"
-      >
-        {{ blog.title }}
-      </li>
-      }
-    </ul> 
+<div class="container">
 
-    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllBlogs()">
-      Remove All
-    </button>
-  </div>
-  <div class="col-md-6">
-    @if (currentBlog) {
-    <div>
-      <app-blog-details
-        (refreshList)="refreshList()"
-        [blog]="currentBlog"
-      ></app-blog-details>
+  <div class="row">
+    <div class="col-md-4">
+      <h4>blogs List</h4>
+      <button (click)="action='new'" class="btn btn-success">Új létrehozása</button>
+      <ul class="list-group">
+        @for (blog of BlogList; track blog.key; let i = $index) {
+          <li
+            class="list-group-item"
+            [class.active]="i == currentIndex"
+            (click)="setActiveBlog(blog, i);action='edit'"
+          >
+            {{ blog.title }}
+          </li>
+        }
+      </ul>
+
+      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllBlogs()">
+        Remove All
+      </button>
     </div>
-    } @else {
-    <div>
-      <br />
-      <p>Please click on a blog...</p>
+    <div class="col-md-8">
+      @if (action === 'edit') {
+        <div>
+          <app-blog-details
+            (refreshList)="refreshList()"
+            [blog]="currentBlog"
+          ></app-blog-details>
+        </div>
+      }
+      @if (action === 'new'){
+        <div class="submit-form">
+          <div>
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input
+                type="text"
+                class="form-control"
+                id="title"
+                required
+                [(ngModel)]="blog.title"
+                [ngModelOptions]="{standalone: true}"
+                name="title"
+              />
+            </div>
+
+            <div class="form-group">
+            <label>Description</label>
+
+            <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+            <ngx-editor [editor]="editor" [ngModel]="blog.description" [ngModelOptions]="{standalone: true}"></ngx-editor>
+            </div>
+
+            <button (click)="saveBlog()" class="btn btn-success">Submit</button>
+          </div>
+        </div>
+      }
     </div>
-    }
   </div>
+
 </div>

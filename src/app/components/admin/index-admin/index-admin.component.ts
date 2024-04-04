@@ -8,11 +8,25 @@ import { Router } from '@angular/router';
   styleUrl: './index-admin.component.css'
 })
 export class IndexAdminComponent {
-  constructor(private auth: AngularFireAuth,private router: Router) {
+  constructor(private auth: AngularFireAuth, private router: Router) {
 
   }
-logout(){
+
+  logout() {
     this.auth.signOut();
-    this.router.navigate(['/']);
-}
+    this.router.navigate([ '/' ]);
+  }
+
+  isOverflown(element: HTMLElement) {
+    return (
+      element.scrollHeight > element.clientHeight ||
+      element.scrollWidth > element.clientWidth
+    );
+  }
+
+  onScrollbarUpdate($event: any) {
+    // if ($event.verticalUsed) {
+    // console.log('verticalUsed', $event.verticalUsed);
+    // }
+  }
 }

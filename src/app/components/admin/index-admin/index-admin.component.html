@@ -1,4 +1,4 @@
-<div>
+<!--<div>
   <nav class="navbar navbar-expand navbar-dark bg-dark">
     <a href="/" class="navbar-brand">Weboldal</a>
     <div class="navbar-nav mr-auto">
@@ -20,4 +20,50 @@
   <div class="container mt-3">
     <router-outlet></router-outlet>
   </div>
+</div>-->
+<!--sidebar-->
+<c-sidebar
+  #sidebar1="cSidebar"
+  class="d-print-none sidebar sidebar-fixed border-end"
+  colorScheme="dark"
+  id="sidebar1"
+  visible
+>
+  <c-sidebar-header class="border-bottom">
+      <a routerLink="/" class="nav-link">Weboldal</a>
+  </c-sidebar-header>
+
+  <ng-scrollbar #scrollbar="ngScrollbar" (updated)="onScrollbarUpdate(scrollbar.state)" class="overflow" pointerEventsMethod="scrollbar" visibility="hover">
+    <nav class="navbar navbar-dark bg-dark d-block m-auto">
+
+      <div class="navbar-nav mr-auto m-auto d-block">
+        <li class="nav-item">
+          <a routerLink="/admin/blogs" class="nav-link">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/admin/file" class="nav-link">Filemanagement</a>
+        </li>
+        <li class="nav-item">
+          <a (click)="logout()" style="cursor: pointer" class="nav-link">Kijelentkezés</a>
+        </li>
+      </div>
+    </nav>
+  </ng-scrollbar>
+</c-sidebar>
+
+<!--main-->
+<div class="wrapper d-flex flex-column min-vh-100">
+  <!--app-header-->
+  <app-default-header
+    class="mb-4 d-print-none header header-sticky p-0 shadow-sm"
+    position="sticky"
+    sidebarId="sidebar1"/>
+  <!--app-body-->
+  <div class="body flex-grow-1">
+    <c-container breakpoint="lg" class="h-auto px-4">
+      <router-outlet/>
+    </c-container>
+  </div>
+  <!--app footer-->
+  <app-default-footer/>
 </div>

@@ -9,13 +9,16 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
+  email:string='';
+  password:string='';
+  showError:boolean = false;
   constructor(private auth: AngularFireAuth, private router: Router) {
   }
 
   login() {
 
 
-    this.auth.signInWithEmailAndPassword('alpek.albert1990@gmail.com', 'Albi1234')
+    this.auth.signInWithEmailAndPassword(this.email, this.password)
         .then((userCredential) => {
           this.auth.updateCurrentUser(userCredential.user);
 
@@ -23,8 +26,7 @@ export class LoginComponent {
 
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
+          this.showError = true;
           // ..
         });
   }

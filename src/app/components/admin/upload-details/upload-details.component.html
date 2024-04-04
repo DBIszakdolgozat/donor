@@ -1,4 +1,4 @@
-<a href="{{ fileUpload.url }}">{{ fileUpload.name }}</a>
+<a href="{{ fileUpload.url }}"><img src="{{ fileUpload.url }}" width="100px">{{ fileUpload.name }}</a>
 <button (click)="deleteFileUpload(fileUpload)"
   class="btn btn-danger btn-sm" style="float: right">
   Delete

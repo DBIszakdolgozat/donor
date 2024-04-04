@@ -1,5 +1,5 @@
 import { Error404Component } from './components/frontend/error404/error404.component'
-import { NgModule } from '@angular/core';
+import { importProvidersFrom, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
@@ -8,7 +8,6 @@ import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AddBlogComponent } from './components/admin/add-blog/add-blog.component';
 import { BlogDetailsComponent } from './components/admin/blog-details/blog-details.component';
 import { BlogsListComponent } from './components/admin/blog-list/blog-list.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -23,11 +22,41 @@ import { IndexComponent } from './components/frontend/index/index.component';
 import { IndexAdminComponent } from './components/admin/index-admin/index-admin.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { HeaderComponent } from './components/frontend/header/header.component';
+import {
+  AlertComponent,
+  ButtonDirective,
+  CardBodyComponent,
+  CardComponent,
+  CardGroupComponent,
+  ColComponent,
+  ContainerComponent,
+  DropdownModule,
+  FormControlDirective,
+  FormDirective,
+  InputGroupComponent,
+  InputGroupTextDirective,
+  NavComponent,
+  NavLinkDirective,
+  RowComponent,
+  SidebarBrandComponent,
+  SidebarComponent,
+  SidebarFooterComponent,
+  SidebarHeaderComponent,
+  SidebarModule,
+  SidebarNavComponent,
+  SidebarToggleDirective,
+  SidebarTogglerDirective
+} from '@coreui/angular';
+import { IconDirective, IconSetService } from '@coreui/icons-angular';
+import { NgScrollbar } from 'ngx-scrollbar';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { DefaultFooterComponent } from './layout/default-layout/default-footer/default-footer.component';
+import { DefaultHeaderComponent } from './layout/default-layout/default-header/default-header.component';
+import { NgxEditorModule } from 'ngx-editor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddBlogComponent,
     BlogDetailsComponent,
     BlogsListComponent,
     UploadFormComponent,
@@ -39,7 +68,8 @@ import { HeaderComponent } from './components/frontend/header/header.component';
     Error404Component,
     IndexAdminComponent,
     AdminDashboardComponent,
-    HeaderComponent
+    HeaderComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -48,8 +78,37 @@ import { HeaderComponent } from './components/frontend/header/header.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    ContainerComponent,
+    DefaultFooterComponent,
+    DefaultHeaderComponent,
+    IconDirective,
+    NgScrollbar,
+    SidebarBrandComponent,
+    SidebarComponent,
+    SidebarFooterComponent,
+    SidebarHeaderComponent,
+    SidebarNavComponent,
+    SidebarToggleDirective,
+    SidebarTogglerDirective,
+    NavComponent,
+    NavLinkDirective,
+    ButtonDirective,
+    CardBodyComponent,
+    CardComponent,
+    CardGroupComponent,
+    ColComponent,
+    FormControlDirective,
+    FormDirective,
+    InputGroupComponent,
+    InputGroupTextDirective,
+    RowComponent,
+    AlertComponent, NgxEditorModule,
   ],
-  providers: [],
+  providers: [
+    importProvidersFrom(SidebarModule, DropdownModule),
+    IconSetService,
+    provideAnimations()
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {

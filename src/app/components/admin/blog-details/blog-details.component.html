@@ -1,56 +1,51 @@
 @if (currentBlog) {
-<div class="edit-form">
-  <h4>Blog</h4>
-  <form>
-    <div class="form-group">
-      <label for="title">Title</label>
-      <input
-        type="text"
-        class="form-control"
-        id="title"
-        [(ngModel)]="currentBlog.title"
-        name="title"
-      />
-    </div>
-    <div class="form-group">
-      <label for="description">Description</label>
-      <input
-        type="text"
-        class="form-control"
-        id="description"
-        [(ngModel)]="currentBlog.description"
-        name="description"
-      />
-    </div>
+  <div class="edit-form">
+    <form>
+      <div class="form-group mt-2">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          [(ngModel)]="currentBlog.title" [ngModelOptions]="{standalone: true}"
+          name="title"
+        />
+      </div>
+      <div class="form-group mt-2">
+      <label>Description</label>
 
-    <div class="form-group">
-      <label><strong>Status:</strong></label>
-      {{ currentBlog.published ? "Published" : "Pending" }}
-    </div>
-  </form>
+      <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+      <ngx-editor [editor]="editor" [ngModel]="currentBlog.description" [ngModelOptions]="{standalone: true}"></ngx-editor>
 
-  @if (currentBlog.published) {
-  <button class="badge badge-primary mr-2" (click)="updatePublished(false)">
-    UnPublish
-  </button>
-  } @else {
-  <button class="badge badge-primary mr-2" (click)="updatePublished(true)">
-    Publish
-  </button>
-  }
+      <div class="form-group">
+        <label><strong>Status:</strong></label>
+        {{ currentBlog.published ? "Published" : "Pending" }}
+      </div>
+      </div>
+    </form>
 
-  <button class="badge badge-danger mr-2" (click)="deleteBlog()">
-    Delete
-  </button>
+    @if (currentBlog.published) {
+      <button class="badge badge-primary mr-2" (click)="updatePublished(false)">
+        UnPublish
+      </button>
+    } @else {
+      <button class="badge badge-primary mr-2" (click)="updatePublished(true)">
+        Publish
+      </button>
+    }
 
-  <button type="submit" class="badge badge-success" (click)="updateBlog()">
-    Update
-  </button>
-  <p>{{ message }}</p>
-</div>
+    <button class="badge badge-danger mr-2" (click)="deleteBlog()">
+      Delete
+    </button>
+
+    <button type="submit" class="badge badge-success" (click)="updateBlog()">
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
 } @else {
-<div>
-  <br />
-  <p>Cannot access this blog...</p>
-</div>
+  <div>
+    <br/>
+    <p>Cannot access this blog...</p>
+  </div>
 }

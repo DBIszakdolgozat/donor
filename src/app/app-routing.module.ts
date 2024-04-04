@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BlogsListComponent } from './components/admin/blog-list/blog-list.component';
-import { AddBlogComponent } from './components/admin/add-blog/add-blog.component';
 import { LoginComponent } from './components/frontend/login/login.component';
 import { FileComponent } from './components/admin/file/file.component';
 import { IndexAdminComponent } from './components/admin/index-admin/index-admin.component';
@@ -45,10 +44,6 @@ const routes: Routes = [
       {
         path: 'file',
         component: FileComponent
-      },
-      {
-        path: 'add',
-        component: AddBlogComponent
       },
       {
         path: '**',
