@@ -22,36 +22,6 @@ import { IndexComponent } from './components/frontend/index/index.component';
 import { IndexAdminComponent } from './components/admin/index-admin/index-admin.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { HeaderComponent } from './components/frontend/header/header.component';
-import {
-  AlertComponent,
-  ButtonDirective,
-  CardBodyComponent,
-  CardComponent,
-  CardGroupComponent,
-  ColComponent,
-  ContainerComponent,
-  DropdownModule,
-  FormControlDirective,
-  FormDirective,
-  InputGroupComponent,
-  InputGroupTextDirective,
-  NavComponent,
-  NavLinkDirective,
-  RowComponent,
-  SidebarBrandComponent,
-  SidebarComponent,
-  SidebarFooterComponent,
-  SidebarHeaderComponent,
-  SidebarModule,
-  SidebarNavComponent,
-  SidebarToggleDirective,
-  SidebarTogglerDirective
-} from '@coreui/angular';
-import { IconDirective, IconSetService } from '@coreui/icons-angular';
-import { NgScrollbar } from 'ngx-scrollbar';
-import { provideAnimations } from '@angular/platform-browser/animations';
-import { DefaultFooterComponent } from './layout/default-layout/default-footer/default-footer.component';
-import { DefaultHeaderComponent } from './layout/default-layout/default-header/default-header.component';
 import { NgxEditorModule } from 'ngx-editor';
 
 @NgModule({
@@ -78,37 +48,9 @@ import { NgxEditorModule } from 'ngx-editor';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    ContainerComponent,
-    DefaultFooterComponent,
-    DefaultHeaderComponent,
-    IconDirective,
-    NgScrollbar,
-    SidebarBrandComponent,
-    SidebarComponent,
-    SidebarFooterComponent,
-    SidebarHeaderComponent,
-    SidebarNavComponent,
-    SidebarToggleDirective,
-    SidebarTogglerDirective,
-    NavComponent,
-    NavLinkDirective,
-    ButtonDirective,
-    CardBodyComponent,
-    CardComponent,
-    CardGroupComponent,
-    ColComponent,
-    FormControlDirective,
-    FormDirective,
-    InputGroupComponent,
-    InputGroupTextDirective,
-    RowComponent,
-    AlertComponent, NgxEditorModule,
+   NgxEditorModule,
   ],
-  providers: [
-    importProvidersFrom(SidebarModule, DropdownModule),
-    IconSetService,
-    provideAnimations()
-  ],
+  providers: [ ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {

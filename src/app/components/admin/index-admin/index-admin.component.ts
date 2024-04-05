@@ -8,8 +8,9 @@ import { Router } from '@angular/router';
   styleUrl: './index-admin.component.css'
 })
 export class IndexAdminComponent {
+  userName:string|null|undefined;
   constructor(private auth: AngularFireAuth, private router: Router) {
-
+    this.auth.currentUser.then(value => this.userName = value?.displayName)
   }
 
   logout() {
