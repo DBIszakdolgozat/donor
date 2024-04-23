@@ -1,2 +1,9 @@
 <app-header></app-header>
 <div class="container mt-3"> Főoldal</div>
+
+<div  *ngFor="let item of blogList">
+  {{item.title}}<br>
+  {{item.description}}<br>
+  {{item.key}}<br>
+  {{item.published}}
+</div>

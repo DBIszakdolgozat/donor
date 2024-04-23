@@ -9,6 +9,7 @@ import { IndexComponent } from './components/frontend/index/index.component';
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { AngularFireAuthGuard } from '@angular/fire/compat/auth-guard';
+import { BlogSingleComponent } from './components/frontend/blog-single/blog-single.component';
 
 const redirectLoggedInToAdmin = () => redirectLoggedInTo([ '/admin' ]);
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo([ '/login' ]);
@@ -18,6 +19,10 @@ const routes: Routes = [
     path: '',
     component: IndexComponent,
     pathMatch: 'full',
+  },
+  {
+    path: 'blog/:id',
+    component: BlogSingleComponent,
   },
 
   {

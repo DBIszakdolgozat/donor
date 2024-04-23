@@ -1,5 +1,5 @@
 import { Error404Component } from './components/frontend/error404/error404.component'
-import { importProvidersFrom, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
@@ -23,6 +23,8 @@ import { IndexAdminComponent } from './components/admin/index-admin/index-admin.
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { HeaderComponent } from './components/frontend/header/header.component';
 import { NgxEditorModule } from 'ngx-editor';
+import { BlogSingleComponent } from './components/frontend/blog-single/blog-single.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -39,18 +41,20 @@ import { NgxEditorModule } from 'ngx-editor';
     IndexAdminComponent,
     AdminDashboardComponent,
     HeaderComponent,
+    BlogSingleComponent
 
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-   NgxEditorModule,
+    NgxEditorModule,
   ],
-  providers: [ ],
+  providers: [],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {
